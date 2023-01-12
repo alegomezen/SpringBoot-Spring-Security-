@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <div th:if="${error != null}"  >
+                <div>
+                    <h5>Error!</h5>
+                    <p  th:text="${error}"></p>
+                </div>
+            </div>
+            <form th:action="@{/logincheck}" method="POST">
+                <div>
+                    <h3>Accede a la biblioteca!</h3>
+                </div>
+                <div>
+                    <input type="email" name="email" placeholder="EMAIL">
+                </div>
+                <div>
+                    <input type="password" name="password" placeholder="PASSWORD">
+                </div>
+                <div>
+                    <button type="submit">Ingresar!</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

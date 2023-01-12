@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Biblioteca Egg</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header>
+            <div>
+                <h2> Carga la editorial aqui!</h2>
+            </div>
+        </header>
+        <div>
+            <!--
+            Cuando el usuario haga clic en subir, se lleva a cabo una accion a traves de un metodo post 
+            al servidor y se ejecuta mediante una url, que es la que añadimos.
+            En el input va a viajar la informacion dentro de una variable, añadimos el atributo name
+            con el identificador del atributo que corresponda. En este caso, nombre. 
+            -->
+            <form action="registro" method="POST">
+                <div >
+                    <div th:if="${error!= null}">
+                        <div>
+                            <h5>Error 👎</h5>
+                            <p th:text="${error}"></p>
+                        </div>  
+                    </div> 
+                    <div th:if="${exito!= null}">
+                        <div>
+                            <h5>Exito!</h5>
+                            <p th:text="${exito}"></p>
+                        </div>  
+                    </div> 
+                    <input type="text" name="nombre" placeholder="Nombre de la editorial">                           
+                </div>
+                <button type="submit" >Subir </button>
+            </form>
+        </div>
+    </body>
+</html>

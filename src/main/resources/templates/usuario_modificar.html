@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Biblioteca Egg</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <div th:if="${error != null}"  >
+            <div>
+                <h5>Error!</h5>
+                <p  th:text="${error}"></p>
+            </div>
+        </div>
+        <div th:if="${exito != null}"  >
+            <div>
+                <h5>Exito!</h5>
+                <p th:text="${exito}"></p>
+            </div>
+        </div>
+            <div>
+                <form th:action="@{/perfilM/__${session.usuariosession.id}__}" method="POST" enctype="multipart/form-data">
+                    <input hidden th:value="${session.usuariosession.id}" name="id">
+                    <div>
+                        <h3>Editar usuario</h3>
+                    </div>
+                     <div>
+                         <input type="text" name="nombre" th:value="${usuario.nombre}">
+                    </div>
+                     <div>
+                         <input type="email" name="email" th:value="${usuario.email}">
+                    </div>
+                     <div>
+                         <input type="file" name="imagen" th:value="${usuario.imagen}">
+                    </div>
+                     <div>
+                         <input type="password" name="password" placeholder="PASSWORD">
+                    </div>
+                     <div>
+                         <input type="password" name="password2" placeholder="REPETIR PASSWORD">
+                    </div>  
+                    <button type="submit">Actualizar</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

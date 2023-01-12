@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Biblioteca Egg</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div >
+
+            <table>
+                <thead>
+                    <tr >
+                        <th scope="col">Id del Usuario</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Foto de Perfil</th>
+                        <th scope="col">Rol</th>
+                        <th scope="col">Cambiar Rol</th>
+                        <th scope="col">Modificar</th>
+
+                    </tr>
+                </thead>
+                <tbody th:each="usuario : ${usuarios}"> 
+                    <tr>
+                        <th scope="row" th:text="${usuario.id}"></th>
+                        <td th:text="${usuario.nombre}"></td>
+                        <td 
+                            <a><img th:if="${usuario.imagen != null}" class="logo" th:src="@{/imagen/perfil/__${usuario.id}__}" ></a>
+                        </td>
+
+                        <td th:text="${usuario.rol}"></td>
+
+                        <td>
+                            <a th:href= "@{/admin/modificarRol/__${usuario.id}__}">Cambiar</a>
+                        </td>
+
+                        <td>
+                            <a th:href= "@{/perfilM}">Modificar</a>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <div th:if="${exito}!=null" >
+                <div>
+                    <h5>Exito ð</h5>
+                    <p th:text="${exito}"></p>
+                </div>
+            </div>
+            <div th:if="${error}!=null" >
+                <div>
+                    <h5>Error ð</h5>
+                    <p th:text="${error}"></p>
+                </div>
+            </div>
+
+            <section>
+                <div>
+                    <div>
+                        <a th:href="@{/admin/dashboard }">Volver</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>

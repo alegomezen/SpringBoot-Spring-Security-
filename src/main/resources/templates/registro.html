@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Formulario Usuarios</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div th:if="${error != null}"  >
+            <div>
+                <h5>Error!</h5>
+                <p  th:text="${error}"></p>
+            </div>
+        </div>
+        <div th:if="${exito != null}"  >
+            <div>
+                <h5>Exito!</h5>
+                <p th:text="${exito}"></p>
+            </div>
+        </div>
+
+        <div>
+
+            <form th:action="@{/registro}" method="POST" enctype="multipart/form-data">
+
+
+                <div>
+                    <h3>Registrate!</h3>
+                </div>
+                <div>
+                    <input type="text" name="nombre" placeholder="NOMBRE" th:value="${nombre}">
+                </div>
+                <div>
+                    <input type="email"  name="email" placeholder="EMAIL" th:value="${email}">
+                </div>
+                <div>
+                    <input type="file"  name="archivo">
+                </div>
+                <div>
+                    <input type="password"  name="password" placeholder="CONTRASEÑA" th:value="${password}">
+                </div>
+                <div>
+                    <input type="password"  name="password2" placeholder="REPETIR CONTRASEÑA" th:value="${password2}">
+                </div>
+
+
+                <button type="submit" >Registrarme</button>
+            </form>
+
+    </body>
+</html> 

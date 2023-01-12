@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+Generamos el archivo html que va a renderizar el proceso de alta de un objeto Libro. 
+Como vamos a usar algo externo a HTML, en este caso, Thymeleaf, debemos añadirlo en el archivo. 
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Formulario de libro</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header>
+            <h2>  Ingrese aquí los datos del libro  </h2>
+        </header>
+        <div>
+            <form action="registro" method="POST">
+                <div>
+                    <div th:if="${error!= null}">
+                        <div>
+                            <h5>Error 👎</h5>
+                            <p th:text="${error}"></p>
+                        </div>  
+                    </div> 
+                    <div th:if="${exito!= null}">
+                        <div>
+                            <h5>Exito!</h5>
+                            <p th:text="${exito}"></p>
+                        </div>  
+                     </div>
+                    <label>Cargar libro</label>
+                    <input type="number" name="isbn" placeholder="ISBN">
+                    <div>
+                    <input type="text" name="titulo" placeholder="Titulo del libro">   
+                    </div>
+                    <div>
+                    <input type="number" name="ejemplares" placeholder="Cantidad de ejemplares">   
+                    </div> 
+                    <div>
+                        <select name="idAutor">
+                            <option>Seleccionar autor</option>
+                            <option th:each="autor : ${autores}"
+                                    th:value="${autor.id}"
+                                    th:text="${autor.nombre}"/>
+                        </select> 
+                    </div> 
+                    <div>
+                        <select name="idEditorial">
+                            <option>Seleccionar Editorial</option>
+                            <option th:each="editorial : ${editoriales}"
+                                    th:value="${editorial.id}"
+                                    th:text="${editorial.nombre}"/>
+                        </select> 
+                    </div> 
+                </div>
+                <button type="submit">Subir</button>
+            </form>     
+        </div>
+    </body>
+</html>
